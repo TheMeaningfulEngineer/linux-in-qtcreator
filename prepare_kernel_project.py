@@ -1,12 +1,14 @@
+#!/usr/bin/python3
+
 import re
-import ipdb
 import os
+import sys
 
 
 def main():
-    build_logfile = "build.log"
+    build_logfile = sys.argv[1]
     
-    kernel_source_files = parse_log(build_logfile, regex_pattern)
+    kernel_source_files = parse_log(build_logfile)
     qt_project_files = detect_qt_creator_projectfiles()
 
     modify_qt_creator_projectfiles(qt_project_files, kernel_source_files)
@@ -119,4 +121,5 @@ def test_modify_qt_creator_projectfiles():
                 assert includefile_content == file_content
 
 
-
+if __name__ == "__main__":
+    main()
