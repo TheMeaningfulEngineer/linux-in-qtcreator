@@ -44,3 +44,5 @@ The script parses the build log for the used files and populates the Qt creator 
 
 This was just a proof of concept that has been hacked to get a first functionality working. Suggestions for improvements are welcome in both functional (Example. "It would be cool if it would auto set building kernel modules from Qt creator) as well as implementation wise (Example. "That's not how one uses pytest"). :)
 
+
+This repository, is released under the [MIT license](LICENSE.txt).
