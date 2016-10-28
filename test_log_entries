@@ -1,1 +1,0 @@
-  gcc -Wp,-MD,arch/x86/tools/.relocs_64.o.d -Wall -Wmissing-prototypes -Wstrict-prototypes -O2 -fomit-frame-pointer -std=gnu89   -I./tools/include  -c -o arch/x86/tools/relocs_64.o arch/x86/tools/relocs_64.c
