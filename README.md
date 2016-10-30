@@ -1,5 +1,8 @@
 # linux-in-qtcreator
 
+### Status
+[![Build Status](https://api.travis-ci.org/alan-martinovic/linux-in-qtcreator.svg)](https://api.travis-ci.org/alan-martinovic/linux-in-qtcreator.svg)
+
 # Motivation
 
 I've always found that I miss a nice environment for experimenting with the Linux kernel so I can quickly jump 
