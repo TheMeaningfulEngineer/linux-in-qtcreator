@@ -5,4 +5,4 @@ python:
 before_install:
     - pip install pytest
 
-script: pytest -v
+script: py.test -v
