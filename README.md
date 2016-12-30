@@ -1,7 +1,7 @@
 # linux-in-qtcreator
 
 ### Status
-[![Build Status](https://api.travis-ci.org/alan-martinovic/linux-in-qtcreator.svg)](https://api.travis-ci.org/alan-martinovic/linux-in-qtcreator.svg)
+[![Build Status](https://api.travis-ci.org/TheMeaningfulEngineer/linux-in-qtcreator.svg?branch=master)
 
 # Motivation
 
