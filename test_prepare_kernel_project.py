@@ -1,5 +1,5 @@
 import prepare_kernel_project
-
+import pdb
 
 def test_parse_log():
     mock_build_log = "test_files/mock_build_log.log"
@@ -12,37 +12,37 @@ def test_parse_log():
     assert expected_results_list == actual_results_list
 
 
+def test_setup_qt_creator_projectfiles():
 
-def test_modify_qt_creator_projectfiles():
+    mock_project_name = "test_files/linux"
+    mock_kernel_sources = ["arch/x86/tools/relocs_common.c",
+                           "scripts/mod/mk_elfconfig.c"]
 
-    mock_project_name = "test_files/random1234"
-    mock_project_files = [mock_project_name + ".config",
+    expected_project_files = [mock_project_name + ".config",
                           mock_project_name + ".files",
-                          mock_project_name + ".includes"]
-    mock_kernel_sources = ["/path/abcd.c",
-                           "/path/arm/bob.c"]
+                          mock_project_name + ".includes",
+                          mock_project_name + ".creator"]
 
-    filesfile_content = ("/path/abcd.c\n"
-                         "/path/arm/bob.c\n")
+    expected_filesfile_content = ("arch/x86/tools/relocs_common.c\n"
+                                  "scripts/mod/mk_elfconfig.c\n")
 
-    configfile_content = ("#define __KERNEL__ \n"
-                          "#include <generated/autoconf.h> ")
+    expected_configfile_content = ("#define __KERNEL__ \n"
+                                   "#include <generated/autoconf.h>\n")
 
-    includefile_content = ("include \n"
-                           "arch/x86/include ")
-    #Generating dummy files
-    for mockfile in mock_project_files:
-        open(mockfile, 'a').close()
+    expected_includefile_content = ("include \n"
+                                    "arch/x86/include\n")
 
-    prepare_kernel_project.modify_qt_creator_projectfiles(mock_project_files, mock_kernel_sources)
+    expected_creatorfile_content = "[General]\n"
+    prepare_kernel_project.setup_qt_creator_projectfiles(mock_project_name, mock_kernel_sources)
 
-    for modified_mockfile in mock_project_files:
-        with open(modified_mockfile, 'r') as mockfile:
-            file_content = mockfile.read()
-            if modified_mockfile.endswith(".config"):
-                assert configfile_content == file_content
-            if modified_mockfile.endswith(".files"):
-                assert filesfile_content == file_content
-            if modified_mockfile.endswith(".includes"):
-                assert includefile_content == file_content
-
+    for qtcreator_config_path in expected_project_files:
+        with open(qtcreator_config_path, 'r') as qtcreator_config_file:
+            file_content = qtcreator_config_file.read()
+            if qtcreator_config_path.endswith(".config"):
+                assert expected_configfile_content == file_content
+            if qtcreator_config_path.endswith(".files"):
+                assert expected_filesfile_content == file_content
+            if qtcreator_config_path.endswith(".includes"):
+                assert expected_includefile_content == file_content
+            if qtcreator_config_path.endswith(".creator"):
+                assert expected_creatorfile_content == file_content
