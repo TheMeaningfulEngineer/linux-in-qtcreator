@@ -6,8 +6,9 @@ import sys
 
 def main():
     build_logfile = sys.argv[1]
+    project_name = sys.argv[2]
     kernel_source_files = parse_log(build_logfile)
-    setup_qt_creator_projectfiles("linux", kernel_source_files)
+    setup_qt_creator_projectfiles(project_name, kernel_source_files)
 
 
 
